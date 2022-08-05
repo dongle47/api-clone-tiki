@@ -1,5 +1,6 @@
 const jsonServer = require('json-server');
 const queryString = require('query-string');
+const faker = require("faker")
 const server = jsonServer.create();
 const router = jsonServer.router('db.json');
 const middlewares = jsonServer.defaults();
@@ -19,6 +20,7 @@ server.use((req, res, next) => {
   if (req.method === 'POST') {
     req.body.createdAt = Date.now();
     req.body.updatedAt = Date.now();
+    req.body.id = faker.random.uuid()
   } else if (req.method === 'PATCH') {
     req.body.updatedAt = Date.now();
   }
