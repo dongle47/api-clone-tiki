@@ -66,16 +66,53 @@
 
 
 // Import packages
-const express = require("express");
-const home = require("./routes/home");
+// const express = require("express");
+// const home = require("./routes/home");
 
-// Middlewares
-const app = express();
-app.use(express.json());
+// const jsonServer = require('json-server')
+// const server = jsonServer.create()
+// const router = jsonServer.router('db.json')
+// const middlewares = jsonServer.defaults()
 
-// Routes
-app.use("/home", home);
 
-// connection
-const port = process.env.PORT || 9001;
-app.listen(port, () => console.log(`Listening to port ${port}`));
+// // Middlewares
+// const app = express();
+// app.use(express.json());
+
+// server.use(middlewares)
+
+// server.get('/echo', (req, res) => {
+//     res.jsonp(req.query)
+// })
+
+// // To handle POST, PUT and PATCH you need to use a body-parser
+// // You can use the one used by JSON Server
+// server.use(jsonServer.bodyParser)
+// server.use((req, res, next) => {
+//     if (req.method === 'POST') {
+//         req.body.createdAt = Date.now()
+//     }
+//     // Continue to JSON Server router
+//     next()
+// })
+
+// // Use default router
+// server.use('/api', router)
+
+// // Routes
+// // app.use("/home", home);
+
+// // connection
+// const port = process.env.PORT || 9001;
+// app.listen(port, () => console.log(`Listening to port ${port}`));
+
+const jsonServer = require('json-server')
+const server = jsonServer.create()
+const router = jsonServer.router('db.json')
+const middlewares = jsonServer.defaults()
+
+server.use(middlewares)
+server.use(router)
+server.listen(3000, () => {
+    console.log('JSON Server is running')
+})
