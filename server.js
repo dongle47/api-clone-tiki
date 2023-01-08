@@ -1,17 +1,3 @@
-// const jsonServer = require('json-server')
-// const server = jsonServer.create()
-// const router = jsonServer.router('db.json')
-// const middlewares = jsonServer.defaults()
-
-// server.use(middlewares)
-
-// server.use(router)
-
-// server.listen(3000, () => {
-//     console.log('JSON Server is running')
-// })
-
-// module.exports = server
 
 const express = require("express");
 const cors = require("cors");
@@ -44,24 +30,24 @@ db.mongoose
         process.exit();
     });
 
-const User = require('./utils/db')
+// const User = require('./utils/db')
 
-app.get('/users', async (req, res) => {
-    try {
-        const users = await User.find({})
-        if (!users)
-            return res.status(404).send()
-        res.status(200).send(users)
-    } catch (e) {
-        res.status(500).send()
-    }
-})
+// app.get('/users', async (req, res) => {
+//     try {
+//         const users = await User.find({})
+//         if (!users)
+//             return res.status(404).send()
+//         res.status(200).send(users)
+//     } catch (e) {
+//         res.status(500).send()
+//     }
+// })
 
 // end test
 
 // simple route
 app.get("/", (req, res) => {
-    res.json({ message: "Welcome to bezkoder application." });
+    res.json({ message: "Api Clone Tiki" });
 });
 
 require("./app/routes/turorial.routes")(app);
