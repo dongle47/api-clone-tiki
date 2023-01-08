@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "generate-data": "node generate-data.js"
+    "generate-data": "node generate-data.js",
+    "dev": "nodemon index.js"
   },
   "author": "",
   "license": "ISC",
