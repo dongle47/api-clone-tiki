@@ -31,8 +31,22 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const db = require("./app/models");
+// db.mongoose
+//     .connect(db.url, {
+//         useNewUrlParser: true,
+//         useUnifiedTopology: true
+//     })
+//     .then(() => {
+//         console.log("Connected to the database!");
+//     })
+//     .catch(err => {
+//         console.log("Cannot connect to the database!", err);
+//         process.exit();
+//     });
+
+// Test
 db.mongoose
-    .connect(db.url, {
+    .connect("mongodb+srv://dong123:dong123@cluster0.0tyl5.mongodb.net/?retryWrites=true&w=majority", {
         useNewUrlParser: true,
         useUnifiedTopology: true
     })
@@ -43,6 +57,21 @@ db.mongoose
         console.log("Cannot connect to the database!", err);
         process.exit();
     });
+
+const User = require('./utils/db')
+
+app.get('/users', async (req, res) => {
+    try {
+        const users = await User.find({})
+        if (!users)
+            return res.status(404).send()
+        res.status(200).send(users)
+    } catch (e) {
+        res.status(500).send()
+    }
+})
+
+// end test
 
 // simple route
 app.get("/", (req, res) => {
