@@ -1,8 +1,8 @@
 const db = require("../models");
-const User = db.users;
+const Product = db.products;
 
 exports.findAll = async (req, res) => {
-    User.find({})
+    Product.find({})
         .then(data => {
             res.send(data);
         })

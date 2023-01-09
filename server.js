@@ -30,28 +30,14 @@ db.mongoose
         process.exit();
     });
 
-// const User = require('./utils/db')
-
-// app.get('/users', async (req, res) => {
-//     try {
-//         const users = await User.find({})
-//         if (!users)
-//             return res.status(404).send()
-//         res.status(200).send(users)
-//     } catch (e) {
-//         res.status(500).send()
-//     }
-// })
-
-// end test
-
 // simple route
 app.get("/", (req, res) => {
     res.json({ message: "Api Clone Tiki" });
 });
 
-require("./app/routes/turorial.routes")(app);
+require("./app/routes/tutorial.routes")(app);
 require("./app/routes/user.routes")(app);
+require("./app/routes/product.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
