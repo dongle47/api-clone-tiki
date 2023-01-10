@@ -14,3 +14,9 @@ exports.findAll = async (req, res) => {
         });
 };
 
+exports.paginateProducts = async (req, res) => {
+    Product.paginate({}, { offset: 3, limit: 2 }).then(data => {
+        res.send(data);
+    })
+};
+

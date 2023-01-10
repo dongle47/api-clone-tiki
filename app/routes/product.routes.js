@@ -5,6 +5,8 @@ module.exports = app => {
 
     router.get("/", product.findAll);
 
+    router.get("/paginate", product.paginateProducts);
+
     app.use("/api/products", router);
 
 };
