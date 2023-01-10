@@ -3,9 +3,9 @@ module.exports = app => {
 
     var router = require("express").Router();
 
-    router.get("/", product.findAll);
+    router.get("/", product.findPaginate);
 
-    router.get("/paginate", product.paginateProducts);
+    router.get("/all", product.findAll);
 
     app.use("/api/products", router);
 

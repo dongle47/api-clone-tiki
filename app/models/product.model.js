@@ -42,12 +42,6 @@ module.exports = mongoose => {
         }
     );
 
-    // schema.method("toJSON", function () {
-    //     const { __v, _id, ...object } = this.toObject();
-    //     object.id = _id;
-    //     return object;
-    // });
-
     schema.plugin(mongoosePaginate);
 
     const Product = mongoose.model("product", schema);
