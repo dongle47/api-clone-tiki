@@ -1,3 +1,5 @@
+const mongoosePaginate = require("mongoose-paginate-v2");
+
 module.exports = mongoose => {
     var schema = mongoose.Schema(
         {
@@ -25,6 +27,10 @@ module.exports = mongoose => {
                 type: Number,
                 required: true,
             },
+            slug: {
+                type: String,
+                required: true,
+            },
             sold: {
                 type: Number,
                 required: true,
@@ -36,11 +42,7 @@ module.exports = mongoose => {
         }
     );
 
-    // schema.method("toJSON", function () {
-    //     const { __v, _id, ...object } = this.toObject();
-    //     object.id = _id;
-    //     return object;
-    // });
+    schema.plugin(mongoosePaginate);
 
     const Product = mongoose.model("product", schema);
     return Product;
