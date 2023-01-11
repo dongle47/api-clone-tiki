@@ -9,9 +9,9 @@ exports.signup = (req, res) => {
   const user = new User({
     mobile: req.body.mobile,
     password: bcrypt.hashSync(req.body.password, 8),
-    avatar: "",
+    avatar: "https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=",
     fullName: "",
-    dateOfBirth: null,
+    birthDay: null,
     sex: "",
     email: ""
   });
@@ -62,7 +62,7 @@ exports.signin = (req, res) => {
           mobile: user.mobile,
           avatar: user.avatar,
           fullName: user.fullName,
-          dateOfBirth: user.dateOfBirth,
+          birthDay: user.birthDay,
           sex: user.sex,
           email: user.email,
         },
@@ -74,3 +74,4 @@ exports.signin = (req, res) => {
 
   }).catch(err => console.log(err))
 };
+
