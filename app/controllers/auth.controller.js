@@ -33,45 +33,6 @@ exports.signup = (req, res) => {
   });
 };
 
-// exports.signin = (req, res) => {
-//   User.findOne({
-//     mobile: req.body.mobile
-//   })
-//     .exec((err, user) => {
-//       if (err) {
-//         res.status(500).send({ message: err });
-//         return;
-//       }
-
-//       if (!user) {
-//         return res.status(404).send({ message: "User Not found." });
-//       }
-
-//       var passwordIsValid = bcrypt.compareSync(
-//         req.body.password,
-//         user.password
-//       );
-
-//       if (!passwordIsValid) {
-//         return res.status(401).send({
-//           accessToken: null,
-//           message: "Invalid Password!"
-//         });
-//       }
-
-//       var token = jwt.sign({ id: user.id }, config.secret, {
-//         expiresIn: 86400 // 24 hours
-//       });
-
-//       res.status(200).send({
-//         id: user._id,
-//         mobile: user.mobile,
-//         email: user.email,
-//         accessToken: token
-//       });
-//     });
-// };
-
 exports.signin = (req, res) => {
   User.findOne({
     mobile: req.body.mobile
@@ -96,13 +57,15 @@ exports.signin = (req, res) => {
       });
 
       res.status(200).send({
-        id: user._id,
-        mobile: user.mobile,
-        avatar: user.avatar,
-        fullName: user.fullName,
-        dateOfBirth: user.dateOfBirth,
-        sex: user.sex,
-        email: user.email,
+        user: {
+          id: user._id,
+          mobile: user.mobile,
+          avatar: user.avatar,
+          fullName: user.fullName,
+          dateOfBirth: user.dateOfBirth,
+          sex: user.sex,
+          email: user.email,
+        },
         accessToken: token
       });
     }
