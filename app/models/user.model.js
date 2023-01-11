@@ -1,33 +1,16 @@
 module.exports = mongoose => {
-    var schema = mongoose.Schema(
-        {
-            name: {
-                type: String,
-                required: true,
-                trim: true
-            },
-            age: {
-                type: Number,
-                required: true,
-            },
-            email: {
-                type: String,
-                required: true,
-            },
-            password: {
-                type: String,
-                required: true,
-                minLength: 5
-            }
-        }
-    );
+  var schema = mongoose.Schema(
+    {
+      mobile: String,
+      password: String,
+      avatar: String,
+      fullName: String,
+      dateOfBirth: Date,
+      sex: String,
+      email: String
+    },
+  );
 
-    schema.method("toJSON", function () {
-        const { __v, _id, ...object } = this.toObject();
-        object.id = _id;
-        return object;
-    });
-
-    const User = mongoose.model("user", schema);
-    return User;
+  const User = mongoose.model("user", schema);
+  return User;
 };

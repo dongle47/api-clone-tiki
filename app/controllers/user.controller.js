@@ -1,16 +1,7 @@
-const db = require("../models");
-const User = db.users;
-
-exports.findAll = async (req, res) => {
-    User.find({})
-        .then(data => {
-            res.send(data);
-        })
-        .catch(err => {
-            res.status(500).send({
-                message:
-                    err.message || "Some error occurred while retrieving users."
-            });
-        });
+exports.allAccess = (req, res) => {
+  res.status(200).send("Public Content.");
 };
 
+exports.userBoard = (req, res) => {
+  res.status(200).send("User Content.");
+};
