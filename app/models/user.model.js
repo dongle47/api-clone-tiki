@@ -1,12 +1,12 @@
 module.exports = mongoose => {
   var schema = mongoose.Schema(
     {
-      mobile: Number,
+      mobile: String,
       password: String,
       avatar: String,
       fullName: String,
       dateOfBirth: Date,
-      sex: Boolean,
+      sex: String,
       email: String
     },
   );
