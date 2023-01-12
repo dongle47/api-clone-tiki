@@ -3,9 +3,9 @@ module.exports = mongoose => {
         {
             fullName: String,
             phone: String,
-            province: String,
-            district: String,
-            ward: String,
+            provinceCode: String,
+            districtCode: String,
+            wardCode: String,
             detail: String,
             userId: String,
         },

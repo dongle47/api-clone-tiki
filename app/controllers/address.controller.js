@@ -6,9 +6,9 @@ exports.create = (req, res) => {
     const address = new Address({
         fullName: req.body.title,
         phone: req.body.phone,
-        province: req.body.province,
-        district: req.body.district,
-        ward: req.body.ward,
+        provinceCode: req.body.provinceCode,
+        districtCode: req.body.districtCode,
+        wardCode: req.body.wardCode,
         detail: req.body.detail,
         userId: req.body.userId
     });
