@@ -15,4 +15,6 @@ module.exports = app => {
   app.get("/api/test/user", [authJwt.verifyToken], controller.userBoard);
 
   app.put("/api/user/update", [authJwt.verifyToken], controller.update);
+
+  app.get("/api/user/:mobile", [authJwt.verifyToken], controller.findOne);
 };

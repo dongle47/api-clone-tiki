@@ -25,3 +25,20 @@ exports.update = (req, res) => {
     })
   })
 };
+
+exports.findOne = (req, res) => {
+
+  // const mobile = req.params.mobile
+
+  User.findOne({ mobile: req.params.mobile }).then(data => {
+    if (!data) {
+      res.send({
+        message: `Cannot find User with mobile=${mobile}. Maybe User was not found!`
+      });
+    } else res.send(data);
+  }).catch(res => {
+    res.status(500).send({
+      message: "Error when retrieving user"
+    })
+  })
+};
