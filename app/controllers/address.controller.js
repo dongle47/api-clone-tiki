@@ -28,7 +28,7 @@ exports.create = (req, res) => {
 };
 
 exports.findOne = (req, res) => {
-    Address.find({ _id: req.params.id }).then(data => {
+    Address.findOne({ _id: req.params.id }).then(data => {
         if (!data) {
             res.send({
                 message: `Cannot find address with user id =${mobile}. Maybe address was not found!`
