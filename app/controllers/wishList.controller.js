@@ -34,20 +34,6 @@ exports.findByUser = (req, res) => {
     })
 };
 
-exports.findOne = (req, res) => {
-    WishList.findOne({ userId: req.body.userId, productSlug: req.body.productSlug }).then(data => {
-        if (!data) {
-            res.send({
-                message: `Cannot find address with user id =${mobile}. Maybe address was not found!`
-            });
-        } else res.send(data);
-    }).catch(res => {
-        res.status(500).send({
-            message: "Error when retrieving address"
-        })
-    })
-};
-
 exports.delete = (req, res) => {
     const id = req.params.id;
 
