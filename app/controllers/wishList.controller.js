@@ -35,7 +35,7 @@ exports.findByUser = (req, res) => {
 };
 
 exports.delete = (req, res) => {
-    const id = req.params.userId;
+    const id = req.params.id;
 
     WishList.findByIdAndRemove(id, { useFindAndModify: false })
         .then(data => {
