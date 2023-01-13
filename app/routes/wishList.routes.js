@@ -8,6 +8,8 @@ module.exports = app => {
 
     router.post("/", controller.create);
 
+    router.post("/findOne", controller.findOne);
+
     router.delete("/:id", controller.delete);
 
     app.use("/api/wishList", router);

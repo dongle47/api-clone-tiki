@@ -3,7 +3,7 @@ const WishList = db.wishLists;
 
 exports.create = (req, res) => {
     const wishList = new WishList({
-        productId: req.body.productId,
+        productSlug: req.body.productSlug,
         userId: req.body.userId,
     });
 
@@ -34,10 +34,24 @@ exports.findByUser = (req, res) => {
     })
 };
 
+exports.findOne = (req, res) => {
+    WishList.findOne({ userId: req.body.userId, productSlug: req.body.productSlug }).then(data => {
+        if (!data) {
+            res.send({
+                message: `Cannot find address with user id =${mobile}. Maybe address was not found!`
+            });
+        } else res.send(data);
+    }).catch(res => {
+        res.status(500).send({
+            message: "Error when retrieving address"
+        })
+    })
+};
+
 exports.delete = (req, res) => {
     const id = req.params.id;
 
-    WishList.findByIdAndRemove(id, { useFindAndModify: false })
+    WishList.findOneAndDelete(id, { useFindAndModify: false })
         .then(data => {
             if (!data) {
                 res.status(404).send({
