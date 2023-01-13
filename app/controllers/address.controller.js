@@ -4,7 +4,7 @@ const Address = db.addresses;
 exports.create = (req, res) => {
 
     const address = new Address({
-        fullName: req.body.title,
+        fullName: req.body.fullName,
         phone: req.body.phone,
         provinceCode: req.body.provinceCode,
         districtCode: req.body.districtCode,
