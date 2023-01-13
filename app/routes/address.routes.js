@@ -15,6 +15,8 @@ module.exports = app => {
 
     router.get("/:userId", [authJwt.verifyToken], controller.findByUser);
 
+    router.get("/byId/:id", [authJwt.verifyToken], controller.findOne);
+
     router.post("/", [authJwt.verifyToken], controller.create);
 
     router.put("/", [authJwt.verifyToken], controller.update);

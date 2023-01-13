@@ -27,6 +27,20 @@ exports.create = (req, res) => {
         });
 };
 
+exports.findOne = (req, res) => {
+    Address.find({ _id: req.params.id }).then(data => {
+        if (!data) {
+            res.send({
+                message: `Cannot find address with user id =${mobile}. Maybe address was not found!`
+            });
+        } else res.send(data);
+    }).catch(res => {
+        res.status(500).send({
+            message: "Error when retrieving address"
+        })
+    })
+};
+
 exports.findByUser = (req, res) => {
     Address.find({ userId: req.params.userId }).then(data => {
         if (!data) {
