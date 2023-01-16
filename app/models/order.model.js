@@ -4,7 +4,7 @@ module.exports = mongoose => {
             userId: String,
             address: Object,
             shipping: Object,
-            payment: String,
+            payment: Object,
             products: Array,
             totalPrice: String,
             createdAt: String,
