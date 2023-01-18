@@ -14,5 +14,6 @@ db.staticData = require("./staticData.model.js")(mongoose);
 db.addresses = require("./address.model.js")(mongoose);
 db.wishLists = require("./wishList.model.js")(mongoose);
 db.orders = require("./order.model.js")(mongoose);
+db.reviews = require("./review.model.js")(mongoose);
 
 module.exports = db;
