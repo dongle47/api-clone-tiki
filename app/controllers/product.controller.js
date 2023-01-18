@@ -43,6 +43,19 @@ exports.findAll = async (req, res) => {
         });
 };
 
+exports.findBySearch = async (req, res) => {
+    Product.find({"slug": { "$all": req.body.searchText }})
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while retrieving users."
+            });
+        });
+};
+
 exports.findBySlug = async (req, res) => {
     Product.find({ slug: req.params.slug })
         .then(data => {

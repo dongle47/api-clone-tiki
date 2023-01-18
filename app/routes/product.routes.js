@@ -9,6 +9,8 @@ module.exports = app => {
 
     router.get("/all", product.findAll);
 
+    router.post("/", product.findBySearch);
+
     app.use("/api/products", router);
 
 };
