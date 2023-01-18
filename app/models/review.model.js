@@ -5,6 +5,7 @@ module.exports = mongoose => {
             productId: String,
             rating: Number,
             productName: String || "",
+            productImage: String,
             content: String,
             userName: String,
             userAvatar: String,

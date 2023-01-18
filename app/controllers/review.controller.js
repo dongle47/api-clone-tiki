@@ -8,6 +8,7 @@ exports.create = (req, res) => {
         productId: req.body.productId,
         rating: req.body.rating,
         productName: req.body.productName,
+        productImage: req.body.productImage,
         content: req.body.content,
         userName: req.body.userName,
         userAvatar: req.body.userAvatar,
