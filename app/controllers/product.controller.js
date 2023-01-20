@@ -30,6 +30,24 @@ exports.findPaginate = async (req, res) => {
         });
 };
 
+exports.filter = async (req, res) => {
+    const { searchText, minRate, minPrice, maxPrice } = req.query;
+
+    Product.find({})
+        .then((data) => {
+            const filteredData = data.filter(item => item.slug.includes(searchText))
+                .filter(item => item.price >= minPrice && item.price <= maxPrice)
+                .filter(item => item.rate >= minRate)
+            res.send(filteredData);
+        })
+        .catch((err) => {
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while retrieving tutorials.",
+            });
+        });
+};
+
 exports.findAll = async (req, res) => {
     Product.find({})
         .then(data => {
@@ -44,7 +62,7 @@ exports.findAll = async (req, res) => {
 };
 
 exports.findBySearch = async (req, res) => {
-    Product.find({"slug": { "$all": req.body.searchText }})
+    Product.find({ "slug": { "$all": req.body.searchText } })
         .then(data => {
             res.send(data);
         })

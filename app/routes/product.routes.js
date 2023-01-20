@@ -5,6 +5,8 @@ module.exports = app => {
 
     router.get("/", product.findPaginate);
 
+    router.get("/filter", product.filter);
+
     router.get("/:slug", product.findBySlug);
 
     router.get("/all", product.findAll);
